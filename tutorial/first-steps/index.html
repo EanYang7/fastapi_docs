@@ -1,0 +1,2127 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="fastapi_docs">
+      
+      
+        <meta name="author" content="Ean Yang">
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/fastapi_docs/tutorial/first-steps/">
+      
+      
+        <link rel="prev" href="../extra-models/">
+      
+      
+        <link rel="next" href="../handling-errors/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+    
+    
+      
+        <title>第一步 - fastapi 文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="fastapi 文档" class="md-header__button md-logo" aria-label="fastapi 文档" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fastapi 文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第一步
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-purple"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="red"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/fastapi_docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github仓库
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="fastapi 文档" class="md-nav__button md-logo" aria-label="fastapi 文档" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    fastapi 文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/fastapi_docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    github仓库
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    并发 async / await
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmarks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基准测试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    开发 - 贡献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fastapi-people/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI 社区
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    帮助 FastAPI 与求助
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 类型提示简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../deployment/versions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    教程 - 用户指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background-tasks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后台任务
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bigger-applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    更大的应用 - 多个文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../body-fields/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求体 - 字段
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../body-multiple-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求体 - 多个参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../body-nested-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求体 - 嵌套模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../body-updates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求体 - 更新数据
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求体
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookie-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CORS（跨域资源共享）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    调试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encoder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON 兼容编码器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra-data-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    额外数据类型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    额外的模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第一步
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第一步
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      交互式 API 文档
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      可选的 API 文档
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      API「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI 和 JSON Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapijson" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看 openapi.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI 的用途
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步概括
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分步概括">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 1：导入 FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 2：创建一个 FastAPI「实例」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 3：创建一个路径操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 3：创建一个路径操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义一个路径操作装饰器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 4：定义路径操作函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 5：返回内容
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../handling-errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    处理错误
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../header-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Header 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    元数据和文档 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中间件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path-operation-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路径操作配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path-params-numeric-validations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路径参数和数值校验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路径参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-params-str-validations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询参数和字符串校验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-forms-and-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    请求表单与文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-forms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表单数据
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../response-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    响应模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../response-status-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    响应状态码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-extra-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    模式的额外信息 - 例子
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL (关系型) 数据库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../static-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    静态文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    测试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../dependencies/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Dependencies
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      交互式 API 文档
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      可选的 API 文档
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      API「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据「模式」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI 和 JSON Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapijson" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看 openapi.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI 的用途
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      分步概括
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分步概括">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 1：导入 FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 2：创建一个 FastAPI「实例」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 3：创建一个路径操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="步骤 3：创建一个路径操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义一个路径操作装饰器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 4：定义路径操作函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      步骤 5：返回内容
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/EanYang7/fastapi_docs/tree/main/docs/tutorial/first-steps.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/fastapi_docs/tree/main/docs/tutorial/first-steps.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">第一步<a class="headerlink" href="#_1" title="Permanent link">⚓︎</a></h1>
+<p>最简单的 FastAPI 文件可能像下面这样：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p>将其复制到 <code>main.py</code> 文件中。</p>
+<p>运行实时服务器：</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Started reloader process [28720]</span>
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Started server process [28722]</span>
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Waiting for application startup.</span>
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Application startup complete.</span>
+</code></pre></div>
+
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>uvicorn main:app</code> 命令含义如下:</p>
+<ul>
+<li><code>main</code>：<code>main.py</code> 文件（一个 Python「模块」）。</li>
+<li><code>app</code>：在 <code>main.py</code> 文件中通过 <code>app = FastAPI()</code> 创建的对象。</li>
+<li><code>--reload</code>：让服务器在更新代码后重新启动。仅在开发时使用该选项。</li>
+</ul>
+</div>
+<p>在输出中，会有一行信息像下面这样：</p>
+<div class="highlight"><pre><span></span><code>INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+</code></pre></div>
+<p>该行显示了你的应用在本机所提供服务的 URL 地址。</p>
+<h3 id="_2">查看<a class="headerlink" href="#_2" title="Permanent link">⚓︎</a></h3>
+<p>打开浏览器访问 <a href="http://127.0.0.1:8000" class="external-link" target="_blank">http://127.0.0.1:8000</a>。</p>
+<p>你将看到如下的 JSON 响应：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="api">交互式 API 文档<a class="headerlink" href="#api" title="Permanent link">⚓︎</a></h3>
+<p>跳转到 <a href="http://127.0.0.1:8000/docs" class="external-link" target="_blank">http://127.0.0.1:8000/docs</a>。</p>
+<p>你将会看到自动生成的交互式 API 文档（由 <a href="https://github.com/swagger-api/swagger-ui" class="external-link" target="_blank">Swagger UI</a> 提供）：</p>
+<p><img alt="Swagger UI" src="https://fastapi.tiangolo.com/img/index/index-01-swagger-ui-simple.png" /></p>
+<h3 id="api_1">可选的 API 文档<a class="headerlink" href="#api_1" title="Permanent link">⚓︎</a></h3>
+<p>前往 <a href="http://127.0.0.1:8000/redoc" class="external-link" target="_blank">http://127.0.0.1:8000/redoc</a>。</p>
+<p>你将会看到可选的自动生成文档 （由 <a href="https://github.com/Rebilly/ReDoc" class="external-link" target="_blank">ReDoc</a> 提供)：</p>
+<p><img alt="ReDoc" src="https://fastapi.tiangolo.com/img/index/index-02-redoc-simple.png" /></p>
+<h3 id="openapi">OpenAPI<a class="headerlink" href="#openapi" title="Permanent link">⚓︎</a></h3>
+<p><strong>FastAPI</strong> 使用定义 API 的 <strong>OpenAPI</strong> 标准将你的所有 API 转换成「模式」。</p>
+<h4 id="_3">「模式」<a class="headerlink" href="#_3" title="Permanent link">⚓︎</a></h4>
+<p>「模式」是对事物的一种定义或描述。它并非具体的实现代码，而只是抽象的描述。</p>
+<h4 id="api_2">API「模式」<a class="headerlink" href="#api_2" title="Permanent link">⚓︎</a></h4>
+<p>在这种场景下，OpenAPI 是一种规定如何定义 API 模式的规范。</p>
+<p>定义的 OpenAPI 模式将包括你的 API 路径，以及它们可能使用的参数等等。</p>
+<h4 id="_4">数据「模式」<a class="headerlink" href="#_4" title="Permanent link">⚓︎</a></h4>
+<p>「模式」这个术语也可能指的是某些数据比如 JSON 的结构。</p>
+<p>在这种情况下，它可以表示 JSON 的属性及其具有的数据类型，等等。</p>
+<h4 id="openapi-json-schema">OpenAPI 和 JSON Schema<a class="headerlink" href="#openapi-json-schema" title="Permanent link">⚓︎</a></h4>
+<p>OpenAPI 为你的 API 定义 API 模式。该模式中包含了你的 API 发送和接收的数据的定义（或称为「模式」），这些定义通过 JSON 数据模式标准 <strong>JSON Schema</strong> 所生成。</p>
+<h4 id="openapijson">查看 <code>openapi.json</code><a class="headerlink" href="#openapijson" title="Permanent link">⚓︎</a></h4>
+<p>如果你对原始的 OpenAPI 模式长什么样子感到好奇，其实它只是一个自动生成的包含了所有 API 描述的 JSON。</p>
+<p>你可以直接在：<a href="http://127.0.0.1:8000/openapi.json" class="external-link" target="_blank">http://127.0.0.1:8000/openapi.json</a> 看到它。</p>
+<p>它将显示以如下内容开头的 JSON：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;openapi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FastAPI&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;/items/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;responses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;200&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Successful Response&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+
+
+<span class="err">...</span>
+</code></pre></div>
+<h4 id="openapi_1">OpenAPI 的用途<a class="headerlink" href="#openapi_1" title="Permanent link">⚓︎</a></h4>
+<p>驱动 FastAPI 内置的 2 个交互式文档系统的正是 OpenAPI 模式。</p>
+<p>并且还有数十种替代方案，它们全部都基于 OpenAPI。你可以轻松地将这些替代方案中的任何一种添加到使用 <strong>FastAPI</strong> 构建的应用程序中。</p>
+<p>你还可以使用它自动生成与你的 API 进行通信的客户端代码。例如 web 前端，移动端或物联网嵌入程序。</p>
+<h2 id="_5">分步概括<a class="headerlink" href="#_5" title="Permanent link">⚓︎</a></h2>
+<h3 id="1-fastapi">步骤 1：导入 <code>FastAPI</code><a class="headerlink" href="#1-fastapi" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>FastAPI</code> 是一个为你的 API 提供了所有功能的 Python 类。</p>
+<div class="admonition note">
+<p class="admonition-title">技术细节</p>
+<p><code>FastAPI</code> 是直接从 <code>Starlette</code> 继承的类。</p>
+<p>你可以通过 <code>FastAPI</code> 使用所有的 Starlette 的功能。</p>
+</div>
+<h3 id="2-fastapi">步骤 2：创建一个 <code>FastAPI</code>「实例」<a class="headerlink" href="#2-fastapi" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p>这里的变量 <code>app</code> 会是 <code>FastAPI</code> 类的一个「实例」。</p>
+<p>这个实例将是创建你所有 API 的主要交互对象。</p>
+<p>这个 <code>app</code> 同样在如下命令中被 <code>uvicorn</code> 所引用：</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
+</code></pre></div>
+
+</div>
+
+<p>如果你像下面这样创建应用：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial002</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p>将代码放入 <code>main.py</code> 文件中，然后你可以像下面这样运行 <code>uvicorn</code>：</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>uvicorn<span class="w"> </span>main:my_awesome_api<span class="w"> </span>--reload
+
+<span class="go">&lt;span style=&quot;color: green;&quot;&gt;INFO&lt;/span&gt;:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="3">步骤 3：创建一个<em>路径操作</em><a class="headerlink" href="#3" title="Permanent link">⚓︎</a></h3>
+<h4 id="_6">路径<a class="headerlink" href="#_6" title="Permanent link">⚓︎</a></h4>
+<p>这里的「路径」指的是 URL 中从第一个 <code>/</code> 起的后半部分。</p>
+<p>所以，在一个这样的 URL 中：</p>
+<div class="highlight"><pre><span></span><code>https://example.com/items/foo
+</code></pre></div>
+<p>...路径会是：</p>
+<div class="highlight"><pre><span></span><code>/items/foo
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>「路径」也通常被称为「端点」或「路由」。</p>
+</div>
+<p>开发 API 时，「路径」是用来分离「关注点」和「资源」的主要手段。</p>
+<h4 id="_7">操作<a class="headerlink" href="#_7" title="Permanent link">⚓︎</a></h4>
+<p>这里的「操作」指的是一种 HTTP「方法」。</p>
+<p>下列之一：</p>
+<ul>
+<li><code>POST</code></li>
+<li><code>GET</code></li>
+<li><code>PUT</code></li>
+<li><code>DELETE</code></li>
+</ul>
+<p>...以及更少见的几种：</p>
+<ul>
+<li><code>OPTIONS</code></li>
+<li><code>HEAD</code></li>
+<li><code>PATCH</code></li>
+<li><code>TRACE</code></li>
+</ul>
+<p>在 HTTP 协议中，你可以使用以上的其中一种（或多种）「方法」与每个路径进行通信。</p>
+<hr />
+<p>在开发 API 时，你通常使用特定的 HTTP 方法去执行特定的行为。</p>
+<p>通常使用：</p>
+<ul>
+<li><code>POST</code>：创建数据。</li>
+<li><code>GET</code>：读取数据。</li>
+<li><code>PUT</code>：更新数据。</li>
+<li><code>DELETE</code>：删除数据。</li>
+</ul>
+<p>因此，在 OpenAPI 中，每一个 HTTP 方法都被称为「操作」。</p>
+<p>我们也打算称呼它们为「操作」。</p>
+<h4 id="_8">定义一个<em>路径操作装饰器</em><a class="headerlink" href="#_8" title="Permanent link">⚓︎</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p><code>@app.get("/")</code> 告诉 <strong>FastAPI</strong> 在它下方的函数负责处理如下访问请求：</p>
+<ul>
+<li>请求路径为 <code>/</code></li>
+<li>使用 <abbr title="HTTP GET 方法"><code>get</code> 操作</abbr></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><code>@decorator</code> Info</p>
+<p><code>@something</code> 语法在 Python 中被称为「装饰器」。</p>
+<p>像一顶漂亮的装饰帽一样，将它放在一个函数的上方（我猜测这个术语的命名就是这么来的）。</p>
+<p>装饰器接收位于其下方的函数并且用它完成一些工作。</p>
+<p>在我们的例子中，这个装饰器告诉 <strong>FastAPI</strong> 位于其下方的函数对应着<strong>路径</strong> <code>/</code> 加上 <code>get</code> <strong>操作</strong>。</p>
+<p>它是一个「<strong>路径操作装饰器</strong>」。</p>
+</div>
+<p>你也可以使用其他的操作：</p>
+<ul>
+<li><code>@app.post()</code></li>
+<li><code>@app.put()</code></li>
+<li><code>@app.delete()</code></li>
+</ul>
+<p>以及更少见的：</p>
+<ul>
+<li><code>@app.options()</code></li>
+<li><code>@app.head()</code></li>
+<li><code>@app.patch()</code></li>
+<li><code>@app.trace()</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>您可以随意使用任何一个操作（HTTP方法）。</p>
+<p><strong>FastAPI</strong> 没有强制要求操作有任何特定的含义。</p>
+<p>此处提供的信息仅作为指导，而不是要求。</p>
+<p>比如，当使用 GraphQL 时通常你所有的动作都通过 <code>post</code> 一种方法执行。</p>
+</div>
+<h3 id="4">步骤 4：定义<strong>路径操作函数</strong><a class="headerlink" href="#4" title="Permanent link">⚓︎</a></h3>
+<p>这是我们的「<strong>路径操作函数</strong>」：</p>
+<ul>
+<li><strong>路径</strong>：是 <code>/</code>。</li>
+<li><strong>操作</strong>：是 <code>get</code>。</li>
+<li><strong>函数</strong>：是位于「装饰器」下方的函数（位于 <code>@app.get("/")</code> 下方）。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p>这是一个 Python 函数。</p>
+<p>每当 <strong>FastAPI</strong> 接收一个使用 <code>GET</code> 方法访问 URL「<code>/</code>」的请求时这个函数会被调用。</p>
+<p>在这个例子中，它是一个 <code>async</code> 函数。</p>
+<hr />
+<p>你也可以将其定义为常规函数而不使用 <code>async def</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial003</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你不知道两者的区别，请查阅 <a href="https://fastapi.tiangolo.com/async/#in-a-hurry">Async: <em>"In a hurry?"</em></a>{.internal-link target=_blank}。</p>
+</div>
+<h3 id="5">步骤 5：返回内容<a class="headerlink" href="#5" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="err">!</span><span class="o">../../../</span><span class="n">docs_src</span><span class="o">/</span><span class="n">first_steps</span><span class="o">/</span><span class="n">tutorial001</span><span class="o">.</span><span class="n">py</span><span class="err">!</span><span class="p">}</span>
+</code></pre></div>
+<p>你可以返回一个 <code>dict</code>、<code>list</code>，像 <code>str</code>、<code>int</code> 一样的单个值，等等。</p>
+<p>你还可以返回 Pydantic 模型（稍后你将了解更多）。</p>
+<p>还有许多其他将会自动转换为 JSON 的对象和模型（包括 ORM 对象等）。尝试下使用你最喜欢的一种，它很有可能已经被支持。</p>
+<h2 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">⚓︎</a></h2>
+<ul>
+<li>导入 <code>FastAPI</code>。</li>
+<li>创建一个 <code>app</code> 实例。</li>
+<li>编写一个<strong>路径操作装饰器</strong>（如 <code>@app.get("/")</code>）。</li>
+<li>编写一个<strong>路径操作函数</strong>（如上面的 <code>def root(): ...</code>）。</li>
+<li>运行开发服务器（如 <code>uvicorn main:app --reload</code>）。</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 25, 2023</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 25, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../extra-models/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 额外的模型">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                额外的模型
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../handling-errors/" class="md-footer__link md-footer__link--next" aria-label="下一页: 处理错误">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                处理错误
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Ean Yang
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/YQisme" target="_blank" rel="noopener" title="github主页" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/244185393?spm_id_from=333.788.0.0" target="_blank" rel="noopener" title="b站主页" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://eanyang7.com" target="_blank" rel="noopener" title="个人主页" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1-96 0zm40 304v128c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9l-28.6 47.6c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352h-16z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.prune", "navigation.top", "toc.follow", "header.autohide", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+    
+  </body>
+</html>
